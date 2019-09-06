@@ -14,6 +14,7 @@ OriginDing是一个基于钉钉机器人，自定义消息即时推送到钉钉�
 
 ## 🔰 安装
 目前仅支持git clone到本地，以package形式导入
+pip install -r requirements.txt
 
 ## 📝 使用
 
@@ -33,7 +34,7 @@ OriginDing是一个基于钉钉机器人，自定义消息即时推送到钉钉�
 
 ```
 # 将package路径添加到PATH
-from OriginDing import Dingserver
+from OriginDing.Robot.Dingserver import Dingserver
 
 # 根据上面得到的accsee_token生成对应群的自定义机器人的实例
 robot1 = Dingserver(access_token='xxxx')
@@ -44,9 +45,9 @@ robot2 = Dingserver(access_token='yyyy')
 level: 推送的消息级别，ERROR、WARN、INFO、DEBUG，ERROR>WARN>INFO>DEBUG, 默认INFO
 type: 推送消息类型，目前支持text， markdown，默认text
 at_all：是否@所有人，是：True，否：FALSE，默认FALSE
-at_users: 需要@的人电话号码，支持多个，List[int], 默认空
+at_users: 需要@的人电话号码，支持多个，List[str], 默认空
 """
-robot1.config(level='DEBUG', type='text', at_all=False, at_users=[15927260404, 15927260505])
+robot1.config(level='DEBUG', type='text', at_all=False, at_users=['15927260404', '15927260505'])
 
 # 向群里发送消息
 robot1.info('这是一条通知信息')
